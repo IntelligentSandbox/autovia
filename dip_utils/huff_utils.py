@@ -6,7 +6,7 @@ stough 202-
 import matplotlib.pyplot as plt
 import numpy as np
 from heapq import *
-from huffnode import HuffNode
+from .huffnode import HuffNode
 
 #Build a huffman tree based on some image I, return the tree
 #Assuming a uint8 single channel image
