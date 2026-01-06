@@ -2,6 +2,8 @@
 
 Autovia is a web application for semantic segmentation of road scenes using the CityScapes dataset.
 
+![webpage](./webpage.png "Semantic Segmentation Webpage")
+
 ## Installation
 
 Install the Python dependencies:
