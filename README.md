@@ -1,42 +1,58 @@
-# Digital Image Processing Final Project - Semantic Segmentation
+# Autovia
 
-Authors: Ramon Asuncion Batista, Santiago Hernandez, Warren Wang
+Autovia is a web application for semantic segmentation of road scenes using the CityScapes dataset.
 
-## Description
+## Installation
 
-Scene segmentation has many use cases in many fields, including but not limited to autonomous driving purposes.
-In this repository we provide a simple web interface for automatic segmentation of roads into predefined classes used in the CityScapes dataset. As can be seen in the video demonstration below, the model performs moderately well on out-of-distribution data (any roads outside of the roads that was used in the CityScapes data). 
+Install the Python dependencies:
 
-## Video Demonstration
-
-[![video](https://img.youtube.com/vi/dSuW3t7GcoA/1.jpg)](https://www.youtube.com/watch?v=dSuW3t7GcoA)
-
-## Data
-
-We used the CityScapes dataset to train the model. You can download the dataset from [this link](https://www.cityscapes-dataset.com/); note you will need to create an account and prove you are affiliated with an educational institution (have a .edu email).
-
-## Model Weights
-
-We provide the model weights ready for download for the fine-tuned resnet34 imagenet pytorch segmentation pretrained model on the CityScapes dataset [here](https://drive.google.com/file/d/1W7VkRgNnAAoXi5Y6FjBWOggHTkfTu5aT/view?usp=sharing). In our use, we put the model weights in at `./weights/` as can be seen in the `run.sh` bash script provided; feel free to place your model weights file in the same place (you will need to create that directory).
-
-## Getting Started
-
-Tested using Python 3.10.13.
-Using your preferred python environment manager, install requisite packages from the requirements.txt file:
-
-```
+```bash
 pip install -r requirements.txt
 ```
 
-Webserver setup
+Install the frontend dependencies:
 
-```
+```bash
 cd webserver
 npm install
 ```
 
-Then to get this running, we have provided a bash script to run both the node webserver and the python flask api. After activating your python environment, execute the script `run.sh`.
+## Usage
 
-### References
+Run both the frontend and backend:
 
-The model architecture, training, and inference code were based off of the tutorial code found [here](https://github.com/talhaanwarch/youtube-tutorials/blob/main/cityscape-tutorial.ipynb).
+```bash
+./run.sh
+```
+
+Or run them separately:
+
+```bash
+# Backend
+python backend.py --model_weights_path ./weights/model-bnet-2.pth
+
+# Frontend (in another terminal)
+cd webserver
+npm start
+```
+
+## Training
+
+To train the model yourself, download the [CityScapes dataset](https://www.cityscapes-dataset.com/) (requires .edu email). You only need these two files:
+
+- `gtFine_trainvaltest.zip` (241MB) - fine annotations for train/val/test sets
+- `leftImg8bit_trainvaltest.zip` (11GB) - left 8-bit images for train/val/test sets
+
+Extract both to `~/data/cityscapes/` and run:
+
+```bash
+python train.py
+```
+
+## Authors
+
+Ramon Asuncion Batista, Santiago Hernandez, Warren Wang
+
+## References
+
+Based on the tutorial code from [talhaanwarch/youtube-tutorials](https://github.com/talhaanwarch/youtube-tutorials/blob/main/cityscape-tutorial.ipynb).
