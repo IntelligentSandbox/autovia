@@ -1,9 +1,16 @@
 flask
-flask_cors
+flask-cors
 pillow
 numpy
+torch
 torchvision
+torchmetrics
 segmentation_models_pytorch
 pytorch_lightning
+lightning
 albumentations
 matplotlib
+opencv-python
+scikit-image
+scipy
+tensorboard
